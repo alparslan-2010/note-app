@@ -10,7 +10,7 @@ export default function Slidebar(props) {
         <div className="title">
 
             <h4 className="text-snippet">{note.body}</h4>
-            <button className="delete-btn">delete</button>
+            <button className="delete-btn" onClick={(event)=> props.deleteNote(event,note.id)}>delete</button>
 
 
 
