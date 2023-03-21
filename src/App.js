@@ -12,6 +12,8 @@ function App() {
 
   const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("notes")) || []);
 
+  const [currentNoteId, setCurrentNoteId] = React.useState(notes[0]?.id);
+
   React.useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
 
@@ -30,9 +32,9 @@ function App() {
   }
 
 
-  function deleteNote(event,noteId) {
+  function deleteNote(event, noteId) {
 
-    setNotes((prevNotes) =>prevNotes.filter((note) => note.id !== noteId));
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
 
 
 
@@ -63,8 +65,51 @@ function App() {
 
   }
 
-  
+
   deleteNote();
+
+
+  // arrow funcition alistirma
+
+  function counterFunc(counter) {
+
+    if (counter > 10) {
+
+      counter = 0;
+
+    }
+
+    else {
+
+      counter++;
+    }
+    return counter;
+
+  }
+
+  //aroowa donustur
+
+  //()=> bu bir arrow 
+  // { bu bir obje}
+
+  //(parametre)=> {logic}
+
+  const counterFunc = (counter) => {
+
+    if (counter > 10) {
+
+      counter = 0;
+
+    }
+
+    else {
+
+      counter++;
+    }
+    return counter;
+   }
+
+   const counterFunc = (counter) => {counter > 100 ? 0 : counter++;}
 
 
   return (
@@ -85,7 +130,7 @@ function App() {
 
               className="split"
             >
-              <Sidebar notes={notes} newNote={createNewNote} deleteNote ={deleteNote}/>
+              <Sidebar notes={notes} newNote={createNewNote} deleteNote={deleteNote} />
               <Editor />
             </Split>
           </div>
